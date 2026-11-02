@@ -191,6 +191,17 @@ button:disabled {
   margin-top: 4px;
 }
 
+.brand img {
+  width: auto !important;
+  height: 68px !important;
+}
+
+.sidebar .brand img {
+  padding: 2px;
+  background: #ffffff;
+  border-radius: 6px;
+}
+
 .logo {
   height: 38px;
   width: 38px;
@@ -755,6 +766,10 @@ td small.cell-small {
 
 .login-card .brand small {
   color: #8c7744;
+}
+
+.login-card .brand img {
+  height: 96px !important;
 }
 
 .login-card h1 {

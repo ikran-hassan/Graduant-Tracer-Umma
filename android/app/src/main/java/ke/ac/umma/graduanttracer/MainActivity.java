@@ -13,8 +13,8 @@ import android.graphics.Color;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-    // Replace with your live public HTTPS URL when deploying online (e.g., https://umma-graduant-tracer.onrender.com)
-    private static final String PRODUCTION_URL = "https://umma-graduant-tracer.onrender.com";
+    // Replace with your live public HTTPS URL when deploying online.
+    private static final String PRODUCTION_URL = "https://umma-graduant-tracer-livi.onrender.com";
     private static final String LOCAL_DEV_URL = "http://localhost:5173";
     
     // Set START_URL to PRODUCTION_URL for remote friends or PRODUCTION builds
