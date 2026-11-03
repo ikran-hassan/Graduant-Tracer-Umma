@@ -10,31 +10,31 @@ The screenshots below are the original screenshots already included in this repo
 
 ### Sign-in
 
-![Graduant Tracer sign-in screen](<WhatsApp Image 2026-10-22 at 23.48.15.jpeg>)
+<p align="center"><img src="WhatsApp%20Image%202026-10-22%20at%2023.48.15.jpeg" alt="Graduant Tracer sign-in screen" width="300"></p>
 
 ### Graduand portal
 
 **Overview and clearance progress**
 
-![Graduand dashboard](<WhatsApp Image 2026-10-22 at 23.48.15 (1).jpeg>)
+<p align="center"><img src="WhatsApp%20Image%202026-10-22%20at%2023.48.15%20(1).jpeg" alt="Graduand dashboard" width="300"></p>
 
 **My clearance stages**
 
-![Graduand clearance stages](<WhatsApp Image 2026-10-22 at 23.48.15 (2).jpeg>)
+<p align="center"><img src="WhatsApp%20Image%202026-10-22%20at%2023.48.15%20(2).jpeg" alt="Graduand clearance stages" width="300"></p>
 
 ### Staff portal
 
 **Office overview**
 
-![Staff overview](<WhatsApp Image 2026-10-22 at 23.48.16.jpeg>)
+<p align="center"><img src="WhatsApp%20Image%202026-10-22%20at%2023.48.16.jpeg" alt="Staff overview" width="300"></p>
 
 **Office clearance queue**
 
-![Staff clearance queue](<WhatsApp Image 2026-10-22 at 23.48.16 (1).jpeg>)
+<p align="center"><img src="WhatsApp%20Image%202026-10-22%20at%2023.48.16%20(1).jpeg" alt="Staff clearance queue" width="300"></p>
 
 ### Administrator portal
 
-![Administrator dashboard](<WhatsApp Image 2026-10-22 at 23.48.16 (2).jpeg>)
+<p align="center"><img src="WhatsApp%20Image%202026-10-22%20at%2023.48.16%20(2).jpeg" alt="Administrator dashboard" width="300"></p>
 
 ## Main features
 
@@ -212,6 +212,10 @@ Update `PRODUCTION_URL` (and `START_URL`, if required) to the correct HTTPS depl
 The Android project uses application ID `ke.ac.umma.graduanttracer`, minimum SDK 23, and target SDK 35.
 
 Build instructions and the existing hosting notes are also available in [DEPLOYMENT.md](DEPLOYMENT.md).
+
+## Live deployment
+
+The hosted web application is available at **[https://umma-graduant-tracer-livi.onrender.com](https://umma-graduant-tracer-livi.onrender.com)**. This is the deployed application URL that users can open in a web browser. It is separate from the GitHub source-code repository and is also the URL configured for the Android WebView wrapper.
 
 ## Deployment
 
