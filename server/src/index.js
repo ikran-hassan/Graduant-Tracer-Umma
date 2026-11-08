@@ -94,6 +94,25 @@ app.post('/api/clearance/submit',auth,requireRole('Graduand'),(req,res)=>{
   audit(req.user.id,'clearance_submitted',`${g.registration_no}:${stageKey}`,next.office);
   res.json({ok:true,stages:stagesFor(g.id)});
 });
+app.post('/api/clearance/restart-from-finance',auth,requireRole('Staff'),(req,res)=>{
+  if(req.user.office!=='Department / HoD') return res.status(403).json({error:'Only the Department / HoD office can restart clearance.'});
+  const graduandId=Number(req.body?.graduandId);
+  if(!Number.isSafeInteger(graduandId)||graduandId<1) return res.status(400).json({error:'Enter a valid graduand.'});
+  const graduand=db.prepare('SELECT id,registration_no FROM graduands WHERE id=?').get(graduandId);
+  if(!graduand) return res.status(404).json({error:'Graduand not found.'});
+  const stageKeys=officeStages.map(([key])=>key);
+  const placeholders=stageKeys.map(()=>'?').join(',');
+  const restart=db.transaction(()=>{
+    const result=db.prepare(`UPDATE clearance_stages
+      SET status='Not started',comment='',updated_at=NULL,reviewed_by=NULL
+      WHERE graduand_id=? AND stage_key IN (${placeholders})`).run(graduandId,...stageKeys);
+    if(result.changes===0) return false;
+    audit(req.user.id,'clearance_restarted_from_finance',`${graduand.registration_no}:finance`,'Reset all clearance stages from Finance');
+    return true;
+  });
+  if(!restart()) return res.status(409).json({error:'No clearance stages were found for this graduand.'});
+  res.json({ok:true,stages:stagesFor(graduandId)});
+});
 app.post('/api/clearance/decision',auth,requireRole('Staff','Admin'),(req,res)=>{
   const [gidText,stageKey]=String(req.body?.requestId||'').split('::');
   const decision=String(req.body?.decision||''), comment=String(req.body?.comment||'').trim();
