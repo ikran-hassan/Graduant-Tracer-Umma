@@ -94,8 +94,8 @@ app.post('/api/clearance/submit',auth,requireRole('Graduand'),(req,res)=>{
   audit(req.user.id,'clearance_submitted',`${g.registration_no}:${stageKey}`,next.office);
   res.json({ok:true,stages:stagesFor(g.id)});
 });
-app.post('/api/clearance/restart-from-finance',auth,requireRole('Staff'),(req,res)=>{
-  if(req.user.office!=='Department / HoD') return res.status(403).json({error:'Only the Department / HoD office can restart clearance.'});
+app.post('/api/clearance/restart-from-finance',auth,requireRole('Staff','Admin'),(req,res)=>{
+  if(req.user.role==='Staff'&&req.user.office!=='Department / HoD') return res.status(403).json({error:'Only the Department / HoD office can restart clearance.'});
   const graduandId=Number(req.body?.graduandId);
   if(!Number.isSafeInteger(graduandId)||graduandId<1) return res.status(400).json({error:'Enter a valid graduand.'});
   const graduand=db.prepare('SELECT id,registration_no FROM graduands WHERE id=?').get(graduandId);
